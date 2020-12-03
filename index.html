@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://swiperjs.com/package/swiper-bundle.min.css">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://swiperjs.com/package/swiper-bundle.min.js"></script>
+
+  <script src="jquery.mobile.custom.min.js"></script>
+  <script src="jquery-slider-min.js"></script>
+
+
+  <title>Document</title>
+</head>
+<body>
+  <style>
+  *{margin:0; padding: 0; box-sizing: border-box;}
+  ul{list-style: none;}
+  a{text-decoration: none; color: #000;}
+  body{font-family: 'Montserrat','Noto Sans KR', sans-serif;background: #f7f7f7;}
+
+  .header{position: fixed; top: 0; left: 0; width: 100%; height: 100px; z-index: 10;
+  transition:top 0.3s;}
+  .header.on{background: #607eee;top: -60px; box-shadow: 0 1px 3px 0 rgba(0,0,0,.12);
+  }
+  .header.on .swiper-slide{color: #FFF;}
+
+  .header img{position: absolute; top: 30px; left: 15px; width: 150px; height: 25px;}
+  .login{position: absolute; top: 26px; right: 58px; font-size: 13px; color: #222;
+    border: 1px solid #222;
+     border-radius: 20px; line-height: 30px; height: 30px; padding: 0 14px;}
+
+  .gnb{position: absolute; width: 100%;top: 70px; left: 0; padding: 0 10px;z-index: 11;}
+    /* .gnb ul:after{content:""; clear: both; display: block;}
+  .gnb ul{text-align: center;}
+  .gnb li{float: left; line-height: 40px; padding: 0 15px;}
+  .gnb a{display: inline-block; font-size: 15px; text-align: center; color: #d3d3d3;} */
+  .gnb .swiper-slide{width: auto; font-size: 15px; text-align: center; color: #222;}
+
+  .main_visual{ background: #f7f7f7;width: 100%;}
+  .text_inner{ padding:137px 10px 0; height: 250px; position: relative;}
+  .text_inner strong{position: relative;font-size: 15px; color: #222;}
+  .text_inner span{display: block; font-size: 13px; color: #222;}
+  .text_inner img{position: absolute; height: 100px; bottom: 20px; right: 30px;}
+
+  .menu{position: absolute; top: 26px; right: 15px; width: 30px; height: 30px; }
+  .menu span{display: block; height: 2px; background: #222; margin: 7px 0; text-indent: -9999px;}
+  </style>
+
+  <header>
+
+      <div class="header">
+        <img src="img/logo.png" alt="로고">
+        <a href="#" class="login">로그인</a>
+
+      <span class="m_btn"></span>
+        <div class="menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="swiper-container gnb">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">마이</div>
+            <div class="swiper-slide">혜택</div>
+            <div class="swiper-slide">금융</div>
+            <div class="swiper-slide">카드</div>
+            <div class="swiper-slide">편의</div>
+            <div class="swiper-slide">디지털</div>
+            <div class="swiper-slide">라이프</div>
+            <div class="swiper-slide">고객센터</div>
+          </div>
+        </div>
+
+      </div><!--header-->
+
+<style>
+.m_menu
+  {position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 100%;
+  background: #FFF;
+  z-index: 99;
+  overflow-y: auto;
+  }
+.close{
+  position: absolute;
+  top: 10px;
+  right: 10px; 
+  padding: 5px 10px; 
+  background: #FFF;
+  }
+.close_header{
+  background: #4e5468;
+  }
+.close_inner{
+  padding: 15px;
+  }
+.close_inner img{width: 20px; margin-right: 10px;
+  }
+.close_gnb ul{
+  overflow: hidden;
+  margin-top: 5px;
+  padding: 0 10px;
+  background:#424759;
+  }
+.close_gnb li{
+  float: left;
+  color: #FFF;
+  font-size: 13px;
+  padding: 5px;
+  margin-right: 5px;
+  }
+.close_gnb li:nth-child(2):before{
+  display: inline-block; 
+  content:""; 
+  width: 1px;
+  height: 10px;
+  margin-right: 5px;
+  background: #ffffff;
+  }
+.close_gnb li:last-child:before{
+  display: inline-block;
+  content:""; 
+  width: 1px;
+  height: 10px;
+  margin-right: 5px;
+  background: #ffffff;
+  }
+</style>
+
+<div class="m_menu">
+<span class="close">X</span>
+<div class="close_header">
+  <div class="close_inner">
+  <a href="#"><img src="menu/home.png" alt="홈버튼"></a>
+  <a href="#"><img src="menu/user.png" alt="유저버튼"></a>
+  <a href="#"><img src="menu/login.png" alt="로그인버튼"></a>
+</div><!--close_inner-->
+  <div class="close_gnb">
+    <ul>
+      <li>개인</li>
+      <li>법인</li>
+      <li>마이페이지</li>
+  </ul>
+  </div><!--close_gnb-->
+</div><!--close_header-->
+<style>
+.my_benefit {padding: 10px;  background: #f7f7f7;}
+.my_inner h2{font-size: 16px; padding: 10px 15px;}
+.my_inner{position: relative; width: 100%;background: #fff;box-shadow: 0 1px 3px 0 rgba(0,0,0,.12);
+            border-radius: 4px;}
+.my_inner ul:after{content:""; clear: both; display: block;}
+.my_inner img{display: block; width: 30px;  margin: auto;}
+.my_inner li{ width: 25%;float: left; text-align: center; padding: 20px 0;}
+.my_inner a{font-size: 11px;}
+
+.my_page{padding: 10px; background: #f7f7f7;}
+.page_inner h2{font-size: 16px; padding: 10px 15px;}
+.page_inner{position: relative; width: 100%;background: #fff;box-shadow: 0 1px 3px 0 rgba(0,0,0,.12);
+            border-radius: 4px;}
+.page_inner ul:after{content:""; clear: both; display: block;}
+.page_inner img{display: block; width: 30px;  margin: auto;}
+.page_inner li{ width: 25%;float: left; text-align: center; padding: 20px 0;}
+.page_inner a{font-size: 11px;}
+
+.my_finance{padding: 10px; background: #f7f7f7;}
+.my_card {padding: 10px; background: #f7f7f7;}
+.my_convenience {padding: 10px; background: #f7f7f7;}
+.my_cs {padding: 10px; background: #f7f7f7;}
+</style>
+<div class="my_benefit">
+  <div class="my_inner">
+    <h2>혜택</h2>
+    <ul>
+      <li><a href=""><img src="menu/point.png" alt="">포인트조회</a></li>
+      <li><a href=""><img src="menu/shop.png" alt="">마이샵혜택</a></li>
+      <li><a href=""><img src="menu/coupon.png" alt="">프리미엄쿠폰</a></li>
+      <li><a href=""><img src="menu/event.png" alt="">진행중이벤트</a></li>
+    </ul>
+  </div><!--my_inner-->
+</div><!--mybenefit-->
+
+<div class="my_convenience">
+  <div class="my_inner">
+    <h2>편의</h2>
+    <ul>
+      <li><a href=""><img src="menu/life1.png" alt="">생활요금보기</a></li>
+      <li><a href=""><img src="menu/life2.png" alt="">유료상품이용</a></li>
+      <li><a href=""><img src="menu/life3.png" alt="">카드사용알림</a></li>
+      <li><a href=""><img src="menu/life4.png" alt="">해외사용설정</a></li>
+    </ul>
+  </div><!--my_card-->
+</div><!--my_finance-->
+<div class="my_finance"
+>
+  <div class="my_inner">
+    <h2>금융</h2>
+    <ul>
+      <li><a href=""><img src="menu/loan1.png" alt="">단기카드대출</a></li>
+      <li><a href=""><img src="menu/loan2.png" alt="">장기카드대출</a></li>
+      <li><a href=""><img src="menu/loan3.png" alt="">맞춤대출</a></li>
+      <li><a href=""><img src="menu/loan4.png" alt="">이용금액결제</a></li>
+    </ul>
+  </div><!--my_inner-->
+</div><!--my_finance-->
+
+<div class="my_card">
+  <div class="my_inner">
+    <h2>카드</h2>
+    <ul>
+      <li><a href=""><img src="menu/card1.png" alt="">나의카드찾기</a></li>
+      <li><a href=""><img src="menu/card2.png" alt="">발급상황조회</a></li>
+      <li><a href=""><img src="menu/card3.png" alt="">카드사용등록</a></li>
+      <li><a href=""><img src="menu/card4.png" alt="">카드간편신청</a></li>
+    </ul>
+  </div><!--my_card-->
+</div><!--my_finance-->
+
+
+<div class="my_page">
+  <div class="page_inner">
+    <h2>마이페이지</h2>
+    <ul>
+      <li><a href=""><img src="img/month.png" alt="">월 명세서</a></li>
+      <li><a href=""><img src="img/list.png" alt="">이용내역</a></li>
+      <li><a href=""><img src="img/next.png" alt="">익월결제예정</a></li>
+      <li><a href=""><img src="img/benefit.png" alt="">내가받은혜택</a></li>
+      <li><a href=""><img src="img/use.png" alt="">이용한도</a></li>
+      <li><a href=""><img src="img/pay.png" alt="">이용금액결제</a></li>
+      <li><a href=""><img src="img/order.png" alt="">전자민원접수</a></li>
+      <li><a href=""><img src="img/card.png" alt="">카드신청</a></li>
+    </ul>
+  </div><!--my_card-->
+</div><!--my_finance-->
+
+
+<div class="my_cs">
+  <div class="my_inner">
+    <h2>고객센터</h2>
+    <ul>
+      <li><a href=""><img src="menu/question.png" alt="">자주하는질문</a></li>
+      <li><a href=""><img src="menu/apply.png" alt="">전자민원접수</a></li>
+      <li><a href=""><img src="menu/center.png" alt="">공인인증센터</a></li>
+      <li><a href=""><img src="menu/download.png" alt="">분실신고</a></li>
+    </ul>
+  </div><!--my_card-->
+</div><!--my_finance-->
+</div><!--m_menu-->
+  </header>
+
+  <script>
+  var swiper = new Swiper('.gnb', {
+    slidesPerView: 'auto',
+    spaceBetween: 30,
+    pagination: {
+      el: '.gnb .swiper-paginatgion',
+      clickable: true,
+    },
+  });
+  </script>
+    <style>
+    .main{position: relative; width: 100%; margin: auto;}
+
+    .list {padding: 10px; background: #f7f7f7;}
+
+    .list_inner{position: relative; width: 100%;background: #fff;box-shadow: 0 1px 3px 0 rgba(0,0,0,.12);
+    border-radius: 4px;}
+    .list_inner ul:after{content:""; clear: both; display: block;}
+    .list_inner img{display: block; width: 30px;  margin: auto;}
+    .list_inner li{ width: 25%;float: left; text-align: center; padding: 20px 0;}
+    .list_inner a{font-size: 11px;}
+    </style>
+
+    <main>
+    <div class="main">
+      <div class="main_visual">
+        <div class="text_inner">
+          <strong>L.POINT→네이버페이</strong>
+          <span>Liiv Mate는 3% 추가적립!</span>
+          <img src="img/liiv.png" alt=""></div>
+        </div>
+      </div><!--main_visual-->
+      <div class="list">
+        <div class="list_inner">
+          <ul>
+            <li><a href=""><img src="img/month.png" alt="">월 명세서</a></li>
+            <li><a href=""><img src="img/list.png" alt="">이용내역</a></li>
+            <li><a href=""><img src="img/next.png" alt="">익월결제예정</a></li>
+            <li><a href=""><img src="img/benefit.png" alt="">내가받은혜택</a></li>
+            <li><a href=""><img src="img/use.png" alt="">이용한도</a></li>
+            <li><a href=""><img src="img/pay.png" alt="">이용금액결제</a></li>
+            <li><a href=""><img src="img/order.png" alt="">전자민원접수</a></li>
+            <li><a href=""><img src="img/card.png" alt="">카드신청</a></li>
+        </ul>
+      </div><!--list_inner-->
+    </div><!--list-->
+
+    <style>
+    .or_card{position: relative; overflow: hidden; background: #fff;padding-bottom: 20px;}
+    .card_list{padding: 0 10px;}
+    .card_list h2{font-size: 16px; padding: 10px 15px;}
+    .card_list ul{float: left;}
+    .card_list li{width: 128px;}
+    .card_list img{ height: 80px; display: block;}
+    .card_list a{display: block; font-size: 14px; text-align: center; padding: 5px 0;}
+    </style>
+
+  <div class="or_card">
+    <div class="card_list">
+      <h2>카드안내 신청</h2>
+      <div class="swiper-container card">
+        <ul class="swiper-wrapper">
+            <li class="swiper-slide"><a href=""><img src="img/card1.png" alt="">펭수체크카드</a></li>
+            <li class="swiper-slide"><a href=""><img src="img/card2.png" alt="">해외에선체크</a></li>
+            <li class="swiper-slide"><a href=""><img src="img/card3.png" alt="">쏘영체크</a></li>
+            <li class="swiper-slide"><a href=""><img src="img/card4.png" alt="">위글위글 첵첵체크</a></li>
+            <li class="swiper-slide"><a href=""><img src="img/card5.png" alt="">펭모티콘</a>
+            <li class="swiper-slide"><a href=""><img src="img/card6.png" alt="">마이핏카드</a>
+            <li class="swiper-slide"><a href=""><img src="img/card7.png" alt="">Easy all 티타늄</a>
+            <li class="swiper-slide"><a href=""><img src="img/card8.png" alt="">Easy ring 티타늄</a>
+            <li class="swiper-slide"><a href=""><img src="img/card9.png" alt="">톡톡</a>
+            <li class="swiper-slide"><a href=""><img src="img/card10.png" alt="">The Easy</a>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+  var swiper = new Swiper('.card', {
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+    pagination: {
+      el: '.card .swiper-paginatgion',
+      clickable: true,
+      },
+   });
+  </script>
+
+  <style>
+  .card_gnb{position: relative;}
+  .card_gnb ul{overflow: hidden; padding: 20px 10px 0;}
+  .card_gnb li{float: left; width: calc(50% - 5px); height: 55px; text-align: center; line-height: 55px;
+                margin-bottom: 10px; background: #fff; box-shadow: 0 2px 7px 0 rgba(0,0,0,.102);}
+  .card_gnb li a{font-size: 14px; color: #222;}
+  .card_gnb li:nth-child(2n){float: right;}
+  </style>
+
+    <div class="card_gnb">
+    <ul>
+      <li><a href="">카드신청</a></li>
+      <li><a href="">바로발급서비스</a></li>
+      <li><a href="">카드수령등록</a></li>
+      <li><a href="">카드발급조회</a></li>
+    </ul>
+    </div>
+    <style>
+    .benefit {padding: 10px; background: #FFF;}
+    .benefit_inner h2{font-size: 16px; padding: 10px 15px;}
+    .benefit .title{text-align: center; padding: 50px 0;}
+    .benefit .desc{font-size: 10px; color: #CCC;}
+    .explain {margin: 0 0 40px 0; padding: 30px 0 0 0; border-top: 1px solid #ccc;}
+  	.explain span {display: block; width: 100%; padding: 7px 15px; margin: 8px 0 0 0; font-size: 15px;
+  		              color: #394873;	background-color: #ECECEC; box-sizing: border-box;}
+  	.explain:first-child {border: none;}
+  	.output {width: 50px; color: #607eee; font-weight: 600; text-align: center; margin: -20px auto 30px auto;}
+    .output:before{content:"₩";}
+  	div:focus {outline: none;}
+  	.ui-loader {display: none;}
+
+  	/* Plugin CSS */
+  	.container {height: 5px; margin: 0 auto 60px auto; background-color: #DADADA; width: 100% !important;}
+  	.dragger {width: 28px;	height: 28px; color: #FFF; font-weight: 600; line-height: 40px;background-color: #607eee; border-radius: 25px;}
+  	.progress {width: 0px; background-color: #222;}
+
+    </style>
+    <script type="text/javascript">
+      $(function() {
+        $('.preview3').createSlide({ output: '.output', maxvalue: 900 });
+      });
+    </script>
+    <div class="benefit">
+      <div class="benefit_inner">
+      <h2>지금 받을 수 있는 혜택</h2>
+        <div class=gazing>
+          <p class="title">오늘 받을 수 있는 최대 캐시백 혜택</p>
+
+          <div class="output"></div>
+        	<div class="preview3"></div>
+
+          <p class="desc">위 결과는 예상 수치이므로 실제혜택과 상이할 수 있습니다.</p>
+        </div>
+      </div>
+    </div>
+
+
+  <style>
+   .loan{padding: 20px 10px 0;    box-sizing: border-box;}
+    .loan .swiper-slide{width: 120px;text-align: center;}
+  .finance{position: relative; overflow: hidden; background: #f7f7f7; padding: 20px 0;}
+  .finance_inner{padding: 0 10px; background: #FFF; box-shadow: 0 1px 3px 0 rgba(0,0,0,.12); border-radius: 4px;}
+  .finance_inner h2{font-size: 16px; padding: 10px 15px;}
+  .finance_inner ul{ }
+  .finance_inner li{float: left; width: calc(50% - 5px); height: 138px;
+                    border: 1px solid #d3d3d3;border-radius: 5px; margin-bottom: 10px;}
+  .finance_inner li:nth-child(2n){float: right;}
+  .finance_inner li a{color: #222;}
+  .finance_inner strong{padding: 5px 0; font-size: 16px; word-break: break-all;}
+  .finance_inner span{display: block; padding: 2px 0; font-size: 14px; color: #666666;}
+  .finance_inner img{display: block; width: 50px; height: 50px; margin: 12px auto;}
+  .finance_inner a{display: block; font-size: 14px; text-align: center; padding: 5px 0;}
+  </style>
+
+  <div class="finance">
+  <div class="finance_inner">
+    <h2>금융</h2>
+    <div class="swiper-container loan">
+      <ul class="swiper-wrapper">
+          <li class="swiper-slide"><a href=""><img src="img/ico_a1.png" alt=""><strong>나만의</strong><span>금융혜택</span></a></li>
+          <li class="swiper-slide"><a href=""><img src="img/ico_a5.png" alt=""><strong>맞춤대출</strong><span>즉시대출</span></a></li>
+          <li class="swiper-slide"><a href=""><img src="img/ico_a2.png" alt=""><strong>단기카드대출</strong><span>현금서비스</span></a></li>
+          <li class="swiper-slide"><a href=""><img src="img/ico_a3.png" alt=""><strong>장기카드대출</strong><span>카드론</span></a></li>
+          <li class="swiper-slide"><a href=""><img src="img/ico_a4.png" alt=""><strong>일부이월약정</strong><span>리볼빙</span></a>
+          <li class="swiper-slide"><a href=""><img src="img/ico_a5.png" alt=""><strong>이용금액결제</strong><span>결제서비스</span></a>
+      </li>
+      </ul>
+    </div>
+  </div>
+  </div>
+  <script type="text/javascript">
+  var swiper = new Swiper('.loan', {
+  slidesPerView: 'auto',
+  spaceBetween: 10,
+  });
+  </script>
+
+
+  <style>
+  .event{padding: 10px; position: relative;}
+  .event_inner{background: #FFF;}
+  .event_inner h2{font-size: 16px; padding: 10px 15px;}
+  .event_inner ul{overflow: hidden;}
+  .event_inner li{height: 100px;}
+  .event_img{float: left;}
+  .event_inner img{width: 90px; height: 90px; margin: 0 10px;}
+  .event_inner strong{font-size: 14px; padding-top: 20px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 20px 0 10px;}
+  .event_inner span{display: block; font-size: 12px;}
+  </style>
+  <div class="event">
+    <div class="event_inner">
+      <h2>진행중인 이벤트</h2>
+      <ul>
+        <li>
+          <div class="event_img"><img src="img/event1.png" alt="이벤트이미지1"></div>
+          <strong> 롤라 경품 대잔치! 1억 백지카드, 다이아, 골드바 총출동!</strong>
+          <span>2020.07.17~2020.12.31</span>
+        </li>
+
+        <li>
+          <div class="event_img"><img src="img/event2.png" alt="이벤트이미지2"></div>
+          <strong>KB손해보험 다이렉트 자동차보험 신규가입 캐시백</strong>
+          <span>2020.10.01~~2020.10.31</span>
+        </li>
+
+        <li>
+          <div class="event_img"><img src="img/event3.jpg" alt="이벤트이미지3"></div>
+          <strong>카셰어링팩 가입하면 스타벅스 쿠폰 2매와 그린카 웰컴 쿠폰 4매 증정</strong>
+          <span>2020.10.05~2020.12.31</span>
+        </li>
+
+        <li>
+          <div class="event_img"><img src="img/event4.jpg" alt="이벤트이미지4"></div>
+          <strong>DB손해보험 다이렉트 자동차보험 신규가입 캐시백</strong>
+          <span>2020.09.17~2020.12.31</span>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <style>
+  .cs_service{position: relative; padding: 10px; background: #f7f7f7;}
+  .cs_inner{background: #FFF; padding: 0 10px;}
+  .cs_inner h2{font-size: 16px; padding: 10px 15px;}
+  .cs_inner ul{overflow: hidden; padding: 20px 5px;}
+  .cs_inner li{float: left; width: calc(50% - 5px); height: 55px; text-align: center; line-height: 55px;
+                margin-bottom: 10px; background: #fff; box-shadow: 0 2px 7px 0 rgba(0,0,0,.102);}
+  .cs_inner li:nth-child(2n){float: right;}
+  .cs_inner a{font-size: 14px; color: #222;}
+
+  </style>
+
+  <div class="cs_service">
+    <div class="cs_inner">
+      <h2>고객센터</h2>
+      <ul>
+        <li><a href="">상담/문의</a></li>
+        <li><a href="">도난/분실신고/해제</a></li>
+        <li><a href="">전자민원접수</a></li>
+        <li><a href="">장애인 회원 안내</a></li>
+        <li><a href="">경영공시</a></li>
+        <li><a href="">상품공시실</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <style>
+  .news{padding-bottom: 15px;background: #fff;}
+  .news h2{font-size: 16px; padding: 10px 15px; border-bottom: 1px solid #d3d3d3;}
+  .news ul{padding: 10px 0;}
+  .news li{font-size: 13px; padding-left: 15px; font-weight: normal; line-height: 28px; }
+  .news a{display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+  </style>
+
+  <div class="news">
+    <h2>뉴스/공지</h2>
+    <ul>
+      <li><a href="">[공지사항]홈페이지 오류 시 조치방법 안내</a></li>
+      <li><a href="">[공지사항]쿠폰 유효기간 미경과 미사용 쿠폰 대체 서비스 안내</a></li>
+      <li><a href="">[공지사항]서비스 일시 중단 안내</a></li>
+      <li><a href="">[공지사항]이마트 KB국민카드 신청량 과다에 따른 발급 및 교부 지연 안내</a></li>
+      <li><a href="">[공지사항]앱카드 결제 이용약관 개정 안내</a></li>
+    </ul>
+  </div>
+
+  </div><!--main-->
+</main>
+
+<style>
+.footer{
+  position: relative; 
+  width: 100%; 
+  margin: auto; 
+  text-align: center;
+  margin-top: 10px;
+}
+.footer_inner{
+  background: #434343;
+  overflow: hidden;
+}
+.footer_menu{
+  position: relative; 
+  padding: 10px 0; 
+  text-align: center;
+}
+.footer_menu ul{
+  display: inline-block;
+}
+.footer_menu li{
+  display: inline-block; 
+  padding: 0 3px;
+}
+.footer_menu a{
+  font-size: 10px; 
+  color: #d3d3d3; 
+  text-align: center;
+  display: inline-block;
+}
+.sns{
+  float: left; 
+  width: 100%;
+  margin: auto; 
+  padding: 17px 0;
+}
+.sns img{
+  height: 25px;
+  padding: 0 10px;
+}
+.addr {
+  float: left;
+  width: 100%; 
+  margin: auto;
+  font-size: 12px; 
+  font-weight: normal;
+  color: #d3d3d3;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.addr p{
+  text-align: center;
+  line-height: 25px;
+}
+.addr span{
+  text-align: center;
+  color: #d3d3d3;
+}
+.addr span:last-child:before{
+  display: block;
+  content:"";
+  width: 1px;
+  height: 10px;
+  margin-right: 5px;
+  background: #ffffff;
+}
+  </style>
+
+  <footer>
+    <div class="footer">
+      <div class="footer_inner">
+        <div class="footer_menu">
+          <ul>
+          <li><a href="">이용약관</a></li>
+          <li><a href="">개인정보처리방침</a></li>
+            <li><a href="">개인정보처리방침</a></li>
+          <li><a href="">고객센터</a></li>
+          <li><a href="">모바일서비스</a></li>
+            <li><a href="">모바일서비스</a></li>
+        </ul>
+
+        <ul class="sns">
+          <a href=""><img src="img/facebook.png" alt="페이스북"></a>
+          <a href=""><img src="img/insta.png" alt="인스타그램"></a>
+          <a href=""><img src="img/youtube.png" alt="유튜브"></a>
+          <a href=""><img src="img/blog.png" alt="블로그"></a>
+          <a href=""><img src="img/twitter.png" alt="트위터"></a>
+        </ul>
+
+        <ul class="addr">
+          <span>고객센터 1588-1688</span>
+          <p>서울시 종로구 새문안로3길 30</p>
+          <span>대표이사 이동철</span>
+          <span>사업자등록번호 101-86-61717</span>
+          <p>ⓒ KB Kookmin Card Corp. All rights reserved.</p>
+        </ul>
+
+        </div><!--footer_menu-->
+        </div><!--footer_inner-->
+      </div><!--footer-->
+    </footer>
+
+    <script type="text/javascript">
+    // $('.m_btn').click(function() {
+    //
+    //   $('.menu').animate({'right':'0'}, 1000);
+    // })
+    //
+    // $('.close').click(function() {
+    //
+    //   $('.menu').animate({'right':'-100%'}, 1000);
+    // })
+
+    $(function(){
+
+      $(".menu").click(function(){
+           $('.m_menu').animate({'left':'0'}, 500);
+      })
+      $(".close").click(function(){
+           $('.m_menu').animate({'left':'100%'}, 500);
+      });
+
+	function scrollHeader(){
+		 if($(window).scrollTop() > 30){
+          $('.header').addClass('on');
+        }else{
+          $('.header').removeClass('on');
+        }
+	}
+	scrollHeader();
+      $(window).scroll(function(){
+        sc = $(window).scrollTop()
+        scrollHeader();
+      })
+
+
+    });
+    </script>
+
+</html>
